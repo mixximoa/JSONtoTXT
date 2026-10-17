@@ -6,13 +6,13 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
 version = 1.0.0
 
-# Необхідні бібліотеки для роботи нашого додатку
+# Необхідні бібліотеки
 requirements = python3,kivy==2.3.0,pillow,plyer
 
 orientation = portrait
 fullscreen = 0
 
-# Дозволи для Android на запис файлів
+# Дозволи Android для доступу до файлів
 android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,MANAGE_EXTERNAL_STORAGE
 android.api = 33
 android.minapi = 21
