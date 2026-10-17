@@ -14,20 +14,23 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install system dependencies
+      - name: Install system dependencies and Lock Cython
         run: |
           sudo apt-get update
           sudo apt-get install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
-          pip install --upgrade pip
-          pip install "cython<3.0.0" buildozer
+          pip install --upgrade pip wheel setuptools
+          pip install "cython==0.29.36" buildozer
+          echo "cython==0.29.36" > $HOME/constraints.txt
+          echo "PIP_CONSTRAINT=$HOME/constraints.txt" >> $GITHUB_ENV
 
       - name: Build APK with Buildozer
+        env:
+          BUILDOZER_WARN_ON_ROOT: "0"
         run: |
-          yes | buildozer -v android debug
+          yes | buildozer android debug
 
       - name: Upload APK artifact
-        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: CadastreRTK-debug
+          name: CadastreRTK-APK
           path: bin/*.apk
