@@ -6,19 +6,17 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
 version = 1.0.0
 
-# Необхідні бібліотеки
-requirements = python3,kivy==2.3.0,pillow,plyer
+requirements = python3,kivy,pillow,plyer
 
 orientation = portrait
 fullscreen = 0
 
-# Дозволи Android для доступу до файлів
-android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,MANAGE_EXTERNAL_STORAGE
+android.permissions = READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 android.api = 33
 android.minapi = 21
 android.ndk = 25b
 android.accept_sdk_license = True
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a
 
 [buildozer]
 log_level = 2
